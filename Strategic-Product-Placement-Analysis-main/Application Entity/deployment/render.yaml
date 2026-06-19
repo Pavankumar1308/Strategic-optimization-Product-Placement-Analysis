@@ -1,0 +1,25 @@
+# Cloud deployment config (Render.com example)
+# Equivalent steps work for Azure App Service, AWS Elastic Beanstalk, or Heroku.
+
+services:
+  - type: web
+    name: sppa-backend
+    env: python
+    buildCommand: "pip install -r backend/requirements.txt"
+    startCommand: "cd backend && gunicorn -b 0.0.0.0:$PORT run:app"
+    envVars:
+      - key: DB_HOST
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_NAME
+        sync: false
+      - key: JWT_SECRET_KEY
+        generateValue: true
+
+  - type: web
+    name: sppa-frontend
+    env: static
+    staticPublishPath: frontend

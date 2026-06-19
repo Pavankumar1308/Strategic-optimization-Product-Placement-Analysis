@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Strategic Product Placement Analysis</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">SALES<span>analytics</span></div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#dashboard">Dashboard</a></li>
+      <li><a href="#predict">Predict</a></li>
+      <li><a href="#login" id="auth-link">Login</a></li>
+    </ul>
+  </nav>
+
+  <header id="home" class="hero">
+    <h1>Strategic Product Placement Analysis</h1>
+    <p>Unveiling Sales Impact with Data-Driven Visualization</p>
+  </header>
+
+  <section id="login" class="auth-section">
+    <div class="card">
+      <h2>Login</h2>
+      <input type="email" id="login-email" placeholder="Email" />
+      <input type="password" id="login-password" placeholder="Password" />
+      <button onclick="login()">Login</button>
+      <p class="hint">No account? <a href="#register-toggle" onclick="toggleRegister()">Register</a></p>
+      <div id="register-box" style="display:none">
+        <input type="text" id="reg-username" placeholder="Username" />
+        <input type="email" id="reg-email" placeholder="Email" />
+        <input type="password" id="reg-password" placeholder="Password" />
+        <button onclick="register()">Create Account</button>
+      </div>
+      <p id="auth-message"></p>
+    </div>
+  </section>
+
+  <section id="dashboard" class="dashboard">
+    <h2>Sales Dashboard</h2>
+    <div class="grid">
+      <div class="chart-card"><h3>Avg Sales Volume by Category</h3><canvas id="chartCategory"></canvas></div>
+      <div class="chart-card"><h3>Avg Sales Volume by Position</h3><canvas id="chartPosition"></canvas></div>
+      <div class="chart-card"><h3>Avg Sales by Foot Traffic</h3><canvas id="chartFootTraffic"></canvas></div>
+    </div>
+  </section>
+
+  <section id="predict" class="predict-section">
+    <h2>Predict Sales Volume</h2>
+    <div class="form-card">
+      <select id="p-category">
+        <option>Clothing</option><option>Electronics</option><option>Food</option>
+      </select>
+      <select id="p-position">
+        <option>Aisle</option><option>End-cap</option><option>Front of Store</option>
+      </select>
+      <select id="p-promotion"><option>Yes</option><option>No</option></select>
+      <select id="p-foot-traffic"><option>Low</option><option>Medium</option><option>High</option></select>
+      <select id="p-demographic">
+        <option>Young adults</option><option>College students</option>
+        <option>Families</option><option>Seniors</option>
+      </select>
+      <select id="p-seasonal"><option>Yes</option><option>No</option></select>
+      <input type="number" id="p-price" placeholder="Price" step="0.01" />
+      <input type="number" id="p-competitor-price" placeholder="Competitor Price" step="0.01" />
+      <button onclick="predictSales()">Predict</button>
+      <h3 id="prediction-result"></h3>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Strategic Product Placement Analysis | Built with Tableau + Flask + ML</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/predict.js"></script>
+</body>
+</html>
